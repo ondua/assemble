@@ -4,11 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-	<link rel="stylesheet" type="text/css" href="/resources/css/reset.css"/>
-	<link rel="stylesheet" type="text/css" href="/resources/css/index/index.css"/>
-	<script type="text/javascript" src="/resources/js/index/jquery.1.12.4.js"></script>
-	<script type="text/javascript" src="/resources/plugins/bxslider/js/jquery.bxslider.js"></script>
-	<link rel="stylesheet" type="text/css" href="/resources/plugins/web-fonts-with-css/css/all.css"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/index/index.css"/>
+	<script type="text/javascript" src="resources/js/index/jquery.1.12.4.js"></script>
+	<script type="text/javascript" src="resources/plugins/bxslider/js/jquery.bxslider.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/plugins/web-fonts-with-css/css/all.css"/>
 	<script>
 		$(document).ready(function(){
 			$('.slider').bxSlider({

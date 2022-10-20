@@ -6,7 +6,7 @@ public class UsersVO {
 	private String user_pwd;
 	private String user_name;
 	private int user_gender;
-	private String user_nickname;
+	private String user_nickname; 
 	private String user_phone1;
 	private String user_phone2;
 	private String user_phone3;

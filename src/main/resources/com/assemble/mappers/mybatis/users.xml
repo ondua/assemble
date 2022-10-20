@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//maybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Users">
+
+	<select id="id_check" resultType="users">
+		select * from users where user_id = #{user_id}
+	</select>
+	
+	<insert id="m_in">
+		insert into users (user_no, user_id, user_pwd, user_name, user_gender, user_nickname, user_phone1, user_phone2, user_phone3, email_id, email_domain
+		, user_state, user_date) values (users_seq.nextval,#{user_id}, #{user_pwd}, #{user_name}, #{user_gender}, #{user_nickname}, #{user_phone1},
+		#{user_phone2}, #{user_phone3}, #{email_id}, #{email_domain}, 1, sysdate)
+	</insert>
+	
+	<select id="p_find" resultType="users">
+    	select * from users where user_id=#{user_id} and user_name=#{user_name}
+	</select>
+	
+	<update id="p_edit">
+    	update users set user_pwd=#{user_pwd} where user_id=#{user_id}
+	</update>
+
+
+	<select id="login_ck" resultType="users">
+    	select * from users where user_id=#{login_id} and user_state=1
+	</select>
+</mapper>

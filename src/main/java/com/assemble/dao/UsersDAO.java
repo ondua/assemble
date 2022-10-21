@@ -14,4 +14,9 @@ public interface UsersDAO {
 
 	UsersVO loginCheck(String login_id);
 
+	UsersVO getUsers(String id);
+
+	void delUser(UsersVO dm);
+
+
 }

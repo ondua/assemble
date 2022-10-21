@@ -71,6 +71,8 @@ CustomAccessDeniedHandler빈아이디 객체명 CustomAccessDenied를 생성 -->
 			 
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	
 </beans>
 
 

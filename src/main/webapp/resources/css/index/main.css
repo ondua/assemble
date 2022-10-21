@@ -161,9 +161,12 @@
 	border-radius: 10px;
 	line-height: 15px;
 	transition: 0.7s;
+	
 }
+
 .login-join:hover{
 	background-color:	#AFEEEE;
+
 }
 .login-join a{
 	text-decoration: none;
@@ -171,12 +174,32 @@
 	transition: 0.7s;
 	display: inline-block;
 }
+
+.login-join input{
+	text-decoration: none;
+	font-size: 12px;
+	transition: 0.7s;
+	display: inline-block;
+	border: none;
+	background-color:transparent	
+
+}
+
 .login-join a:hover{
 	color:	#B0C4DE;
 	font-weight: bold;
 	scale:1.2;
-	display: inline-block;
+
 }
+
+.login-join input:hover{
+	color:	#B0C4DE;
+	font-weight: bold;
+	scale:1.2;
+	display: inline-block;
+	background-color:transparent	
+}
+
 /*                                 */
 .thumbnail-slider{
 	position: relative;

@@ -1,6 +1,9 @@
 package com.assemble.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -163,11 +166,89 @@ public class UsersController {
        
        out.println("<script>");
        out.println("alert('로그아웃 되었습니다!');");
-       out.println("location='users_login';");
+       out.println("location='main';");
        out.println("</script>");
        
        return null;
     }//users_logout()
+    
+    //마이페이지
+	@GetMapping("myPage")
+	public ModelAndView mypage() {
+		ModelAndView my = new ModelAndView();
+		my.setViewName("myPage/myPage");
+		return my;
+	}//login()
+	
+    
+	//회원탈퇴 폼
+	@RequestMapping("/users_del")
+	public ModelAndView users_del(HttpServletResponse response, HttpSession session)
+	throws Exception{
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out=response.getWriter();
+		String id=(String)session.getAttribute("id");
+		
+		if(id == null) {
+			out.println("<script>");
+			out.println("alert('다시 로그인 하세요!');");
+			out.println("location='users_login';");
+			out.println("</script>");
+		}else {
+			UsersVO dm=this.usersService.getUsers(id);
+			ModelAndView m=new ModelAndView("del/del");
+			m.addObject("m",dm);
+			return m;
+		}
+		return null;
+	}//User_del()
+	
+
+	/*회원 탈퇴 완료*/
+	@PostMapping("users_del_ok")
+	public String users_del_ok(HttpServletResponse response, HttpSession session,
+			HttpServletRequest request,
+			@RequestParam("del_pwd") String del_pwd,String del_cont, UsersVO dm) 
+					throws Exception{
+
+		response.setContentType("text/html; charset=UTF-8");
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		PrintWriter out=response.getWriter();
+		String id=(String)session.getAttribute("id"); //세션 아이다값을 구함
+		
+		if(id == null) {
+			out.println("<script>");
+			out.println("alert('다시 로그인 하세요!');");
+			out.println("locaction='users_login';");
+			out.println("</script>");	
+		}else {
+			del_pwd=PwdChange.getPassWordToXEMD5String(del_pwd); //비번을 암호화
+			UsersVO db_pwd=this.usersService.getUsers(id);
+			
+			if(!db_pwd.getUser_pwd().equals(del_pwd)) {
+				out.println("<script>");
+				out.println("alert('비번이 다릅니다!');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+			}else {
+				dm.setUser_id(id); dm.setUser_delcont(del_cont); //탈퇴 사유 저장
+				this.usersService.delUser(dm); //회원탈퇴
+				
+				session.invalidate(); //세션 만료
+				
+				out.println("<script>");
+				out.println("alert('회원 탈퇴 했습니다 !');");
+				out.println("location='users_login';");
+				out.println("</script>");
+			}//inner if else
+		}//outer if else
+		return null;	
+	}//users_del_ok()
+
+	
+
     
     
     //반복적인 코드 하나로 줄이기

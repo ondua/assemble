@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +90,10 @@
 </script>
 </head>
 <body>
+
    <div class="wrap">
+   	 <c:if test="${empty id}"><%--로그인 전 화면 --%>
+   
       <header>
          <div class="header-div">
             <h2>
@@ -150,6 +155,80 @@
          </div>
       </header>
       <div style="clear: both;"></div>
+      </c:if>
+      
+      <c:if test="${!empty id}"><%--로그인 이후 화면 --%>
+      
+      <header>
+			<div class="header-div">
+				<h2>
+					<a href="main"><img src="./images/index/logo.png" width="150"
+					height="65" alt="웹툰리뷰"></a>
+				</h2>
+				<div class="selector-menu">
+					<a href="tagpage/tag.jsp"><i class="fa-solid fa-play"></i><span>태그검색</span></a> 
+					<a href="thema/thema.jsp"><i class="fa-solid fa-play"></i><span>테마검색</span></a> 
+					<a href="FAQ/FAQ.jsp"><i class="fa-solid fa-play"></i><span>FAQ</span></a> 
+					<a href="board/freeboard.jsp"><i class="fa-solid fa-play"></i><span>사사게</span></a>
+				</div>
+				<button class="header-plus-btn" name="header-plus-btn">
+						<i class="fa-solid fa-plus"></i>
+				</button>
+				
+
+				<form method="post" action="users_logout">
+					<div class="login-join">
+						<input type="button" class="login" value="${id}"
+							onclick="location='myPage';" />  |  
+						<input type="submit" class="join" value="로그아웃" />
+				</div>
+				</form>
+	
+
+				<div style="clear: both;"></div>
+
+				<div class="header-plus">
+					<div class="header-content">
+						<div class="header-content-bar">
+							<ul>
+								<li><a href="#">공지사항</a></li>
+								<li><a href="#">업데이트</a></li>
+								<li><a href="#">이벤트</a></li>
+								<li><a href="#">개발자의 편지</a></li>
+							</ul>
+						</div>
+						<div class="header-content-bar">
+							<ul>
+								<li><a href="#">장르분류</a></li>
+								<li><a href="#">플랫폼 분류</a></li>
+								<li><a href="#">시대분류</a></li>
+								<li><a href="#">완결웹툰</a></li>
+								<li><a href="#">작가분류</a></li>
+							</ul>
+						</div>
+						<div class="header-content-bar">
+							<ul>
+								<li><a href="#">커뮤니티</a></li>
+								<li><a href="#">소통의 장</a></li>
+								<li><a href="#">내 인생 웹툰</a></li>
+								<li><a href="#">갤러리</a></li>
+								<li><a href="#">Q&amp;A</a></li>
+							</ul>
+						</div>
+						<div class="header-content-bar">
+							<ul>
+								<li><a href="#">FAQ</a></li>
+								<li><a href="#">신고센터</a></li>
+								<li><a href="#">보안서비스</a></li>
+								<li><a href="#">클라이언트</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div style="clear: both;"></div>
+		</c:if>
       <!-- ------------------------------------------------------------------ -->
       <div class="thumbnail-slider">
          <div class="slider1">

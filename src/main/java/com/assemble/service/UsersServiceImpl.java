@@ -35,5 +35,19 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersVO loginCheck(String login_id) {
 		return this.usersDAO.loginCheck(login_id);
-	} 
+	}
+
+	@Override
+	public UsersVO getUsers(String id) {
+		return this.usersDAO.getUsers(id);
+	}
+
+	@Override
+	public void delUser(UsersVO dm) {
+		this.usersDAO.delUser(dm);
+	}
+
+
+
+
 }

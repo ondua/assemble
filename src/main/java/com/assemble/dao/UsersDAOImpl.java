@@ -36,4 +36,21 @@ public class UsersDAOImpl implements UsersDAO {
 	public UsersVO loginCheck(String login_id) {
 		return this.sqlSession.selectOne("login_ck", login_id);
 	}
+
+	@Override
+	public UsersVO getUsers(String id) {
+		return this.sqlSession.selectOne("m_edit", id);
+	}
+
+	@Override
+	public void delUser(UsersVO dm) {
+		this.sqlSession.delete("m_del", dm);
+	}
+	
+
+
+
+
+
+
 }

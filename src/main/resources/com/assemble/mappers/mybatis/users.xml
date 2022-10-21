@@ -28,4 +28,19 @@ PUBLIC "-//maybatis.org//DTD Mapper 3.0//EN"
 	<select id="login_ck" resultType="users">
     	select * from users where user_id=#{login_id} and user_state=1
 	</select>
+	
+		<!-- 회원정보 보기 -->
+	<select id="m_edit" parameterType="java.lang.String" resultType="users">
+	 select * from users where user_id=#{id}
+	</select>
+	
+		<!-- 회원탈퇴 -->
+	<delete id="m_del">
+	 update users set user_delcont=#{user_delcont}, user_deldate=sysdate, user_state=2
+	 where user_id=#{user_id} 
+	</delete>
+
+	 
+	
+	
 </mapper>

@@ -23,6 +23,10 @@
 	
 	<context:component-scan base-package="com.assemble.controller" />
 	
+	<resources location="/resources/js/" mapping="/js/**" />
+   <resources location="/resources/css/" mapping="/css/**" />
+   <resources location="/resources/plugins/" mapping="/plugins/**" />
+   <resources location="/resources/images/" mapping="/images/**" />
 	
 	
 </beans:beans>
